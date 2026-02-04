@@ -6,7 +6,7 @@ vim.pack.add({
 	'https://github.com/neovim/nvim-lspconfig',
 	'https://github.com/mason-org/mason.nvim',
 	'https://github.com/mason-org/mason-lspconfig.nvim',
-	'https://github.com/rhysd/git-messenger.vim',
+	'https://github.com/lewis6991/gitsigns.nvim',
 })
 
 require 'mini.pick'.setup()
@@ -14,6 +14,13 @@ require 'oil'.setup()
 
 require 'mason'.setup()
 require 'mason-lspconfig'.setup()
+
+require 'gitsigns'.setup {
+	current_line_blame = true,
+	current_line_blame_opts = {
+		delay = 500,
+	},
+}
 
 vim.cmd 'colorscheme monoglow'
 
@@ -46,4 +53,4 @@ vim.keymap.set('n', '<leader>fw', ':Pick grep_live<CR>')
 
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
 
-vim.keymap.set('n', '<leader>gb', ':GitMessenger<CR>')
+vim.keymap.set('n', '<leader>gb', ':Gitsigns blame<CR>')
